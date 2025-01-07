@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="rus">
+    <head class="header">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'auth_portal/styles/main_layout.css' %}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <section class="fullscreen">
+                <div class="fullscreen__body">
+                    <div class="auth-panel">
+                        <div class="elem-1">
+                            <h1 class="login title">Логин</h1>
+                            <input class="login field" type="text" name="userlogin" value="">
+                        </div>
+                        <div class="elem-2">
+                            <h1 class="password title">Пароль</h1>
+                            <input type="password" name="userpass_type" class="password field">
+                        </div>
+                        <div class="elem-3">
+                            <a class="enter link" href="reg/"><div class="enter button"><h1 class="password title">Войти</h1></div></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+
