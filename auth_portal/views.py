@@ -7,5 +7,5 @@ def auth(request: HttpRequest):
     return render(request=request, template_name=r"auth_portal\auth.html")
 
 def login(request: HttpRequest):
-    return render(request=request, template_name=r"auth_portal\profile_layout.html")
+    return render(request=request, template_name=r"auth_portal\user_profile.html")
     

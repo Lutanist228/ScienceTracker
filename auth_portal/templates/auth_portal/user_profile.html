@@ -1,0 +1,27 @@
+{% extends 'auth_portal/profile_layout.html' %}
+
+{% block title  %}Профиль Пользователя{% endblock %}
+
+{% block panel_header %}
+{% comment %} <h1 class="panel-title">ИНФОРМАЦИЯ О {{user.role}}</h1> {% endcomment %}
+<h1 class="panel-title">ИНФОРМАЦИЯ О СТУДЕНТЕ</h1>
+{% endblock %}
+
+{% block panel_body %}
+<div class="info_block">
+    <div class="g_elem fio"><p>ФИО:</p><textarea></textarea></div>
+    <div class="g_elem group"><p>Группа:</p><textarea></textarea></div>
+    <div class="g_elem fac"><p>Факультет:</p><textarea></textarea></div>
+    <div class="g_elem mail"><p>Почта:</p><textarea></textarea></div>
+    <div class="g_elem spec"><p>Специальность:</p><textarea></textarea></div>
+    <div class="g_elem educ"><p>Уровень Образования:</p><textarea></textarea></div>
+    <div class="g_elem phone"><p>Телефон:</p><textarea></textarea></div>
+    <div class="g_elem interest"><p>Области научного интереса:</p><textarea></textarea></div>
+    <div class="g_elem orcid"><p>ORCID:</p><textarea></textarea></div>
+    <div class="g_elem others"><p>Дополнительная информация:</p><textarea></textarea></div>
+</div>
+{% endblock %}
+
+
+
+
