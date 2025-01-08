@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="rus">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'auth_portal/styles/profile_layout.css' %}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <section class="fullscreen">
+                <div class="fullscreen__body">
+                    <div class="profile-panel">
+                        <div class="panel-header">
+                            {% block panel_header%}
+                            {% endblock %}
+                        </div>
+                        <div class="panel-body">
+                            {% block panel_body %}
+                            {% endblock %}
+                        </div>
+                        <div class="panel-footer">
+                            {% block panel_footer %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

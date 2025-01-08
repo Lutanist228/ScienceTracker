@@ -4,8 +4,8 @@ from django.http import HttpRequest, HttpResponse
 # Create your views here.
 
 def auth(request: HttpRequest): 
-    return render(request=request, template_name="auth_portal\main_layout.html")
+    return render(request=request, template_name=r"auth_portal\auth.html")
 
-def reg(request: HttpRequest):
-    return HttpResponse("Страница регистрации")
+def login(request: HttpRequest):
+    return render(request=request, template_name=r"auth_portal\profile_layout.html")
     
