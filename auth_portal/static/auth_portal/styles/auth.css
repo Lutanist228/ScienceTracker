@@ -25,12 +25,32 @@ input {
     outline:none;
 }
 
-h1 {
+button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #D7E7F4;
+    margin-top: 30px;
+    width: 200px;
+    height: 45px;
+    border-radius: 15px;
+}
+
+p {
     color: #343434;
     font-size: large;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: auto;
+}
+
+p.error_msg {
+    font-weight: 500;
+    font-size: medium;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: red;
 }
 
 .auth-panel {
@@ -46,18 +66,7 @@ h1 {
     justify-content: center;
 }
 
-.auth-panel .button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #D7E7F4;
-    margin-top: 30px;
-    width: 200px;
-    height: 45px;
-    border-radius: 15px;
-}
-
-.auth-panel > .elem-1, .elem-2 {
+.auth-panel .elem-1, .elem-2 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,10 +97,3 @@ h1 {
     flex-basis: 300px;
 }
 
-a {
-    text-decoration: none;
-}
-
-a:visited {
-    color: none;
-  }

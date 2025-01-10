@@ -8,16 +8,24 @@
 
 {% block panel_body %}
 <div class="info_block">
-    <div class="g_elem fio"><p>ФИО:</p><textarea></textarea></div>
-    <div class="g_elem group"><p>Группа:</p><textarea></textarea></div>
-    <div class="g_elem fac"><p>Факультет:</p><textarea></textarea></div>
-    <div class="g_elem mail"><p>Почта:</p><textarea></textarea></div>
-    <div class="g_elem spec"><p>Специальность:</p><textarea></textarea></div>
-    <div class="g_elem educ"><p>Уровень Образования:</p><textarea></textarea></div>
-    <div class="g_elem phone"><p>Телефон:</p><textarea></textarea></div>
+    <div class="g_elem fio"><p>ФИО: <p>{{ fio }}</p></p></div>
+    <div class="g_elem group"><p>*Группа:</p><textarea></textarea></div>
+    <div class="g_elem fac"><p>*Факультет:</p><textarea></textarea></div>
+    <div class="g_elem mail"><p>Почта: <p>{{ mail }}</p></p></div>
+    <div class="g_elem spec"><p>*Специальность:</p><textarea></textarea></div>
+    <div class="g_elem educ"><p>*Уровень Образования:</p><textarea></textarea></div>
+    <div class="g_elem phone"><p>*Телефон:</p><textarea></textarea></div>
     <div class="g_elem interest"><p>Области научного интереса:</p><textarea></textarea></div>
     <div class="g_elem orcid"><p>ORCID:</p><textarea></textarea></div>
     <div class="g_elem others"><p>Дополнительная информация:</p><textarea></textarea></div>
+</div>
+{% endblock %}
+
+{% block panel_footer %}
+<div class="options">
+    <a class="enter_cabinet button"><p>Личный Кабинет 🗂</p></a>
+    <a class="attach_portfolio button"><p>Прикрепить мое Портфолио 🧷</p></a>
+    <a class="download_portfolio button"><p>Скачать мое Портфолио 📁</p></a>
 </div>
 {% endblock %}
 

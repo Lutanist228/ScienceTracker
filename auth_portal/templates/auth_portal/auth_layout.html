@@ -12,19 +12,20 @@
         <div class="wrapper">
             <section class="fullscreen">
                 <div class="fullscreen__body">
-                    <div class="auth-panel">
+                    <form class="auth-panel">
                         <div class="elem-1">
-                            <h1 class="login title">Логин</h1>
-                            <input class="login field" type="text" name="userlogin" value="">
+                            <p class="login title">Логин</p>
+                            <input type="text" class="login field" name="userlogin" minlength="5" maxlength="255">
                         </div>
                         <div class="elem-2">
-                            <h1 class="password title">Пароль</h1>
-                            <input type="password" name="userpass_type" class="password field">
+                            <p class="password title">Пароль</p>
+                            <input type="password" class="password field" name="userpass" minlength="5" maxlength="50">
                         </div>
                         <div class="elem-3">
-                            <a class="enter link" href={{ url }}><div class="enter button"><h1 class="password title">Войти</h1></div></a>
+                            <button type="submit" class="enter button"><p class="password title">Войти</p></button>
                         </div>
-                    </div>
+                        {% block error_message%}{% endblock %}
+                    </form>
                 </div>
             </section>
         </div>
