@@ -4,3 +4,6 @@
 migrations
 settings.py
 img
+config.py
+*.json
+test.py
