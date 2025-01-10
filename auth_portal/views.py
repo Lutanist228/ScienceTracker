@@ -10,19 +10,17 @@ load_dotenv()
 
 class StudentViews():
     def login(request: HttpRequest, user_data: dict) -> HttpResponse:
-        return render(request=request, template_name=r"auth_portal\student_profile.html", context=user_data)
+        return render(request=request, template_name=r"auth_portal\student_profile_inactive.html", context=user_data)
 
 class SupervisorViews():
     def login(request: HttpRequest, user_data: dict) -> HttpResponse:
-        return render(request=request, template_name=r"auth_portal\supervisor_profile.html", context=user_data)
+        return render(request=request, template_name=r"auth_portal\supervisor_profile_inactive.html", context=user_data)
 
 def auth(request: HttpRequest) -> HttpResponse: 
     user_data = request.GET
     error_log = {"error":None}
     
     input_check = list(filter(lambda x: len(x) > 0, user_data.values()))
-    
-    
     
     if len(user_data) != 0:
         if len(input_check) == 0:
@@ -42,3 +40,6 @@ def auth(request: HttpRequest) -> HttpResponse:
                 return render(request=request, template_name=r"auth_portal\auth_error.html", context=error_log)
     else:
         return render(request=request, template_name=r"auth_portal\auth_layout.html")
+
+def home():
+    pass

@@ -1,6 +1,6 @@
 *,
 *::before,
-*::after{
+*::after {
     padding: 0;
     margin: 0;
     border: 0;
@@ -51,6 +51,7 @@ p.error_msg {
     text-transform: lowercase;
     letter-spacing: 1px;
     color: red;
+    margin: 0;
 }
 
 .auth-panel {
