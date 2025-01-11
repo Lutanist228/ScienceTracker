@@ -7,23 +7,24 @@
 {% endblock %}
 
 {% block panel_body %}
-<div class="info_block">
+<form class="info_block">
     <div class="g_elem supfio"><p>ФИО: <p>{{ fio }}</p></p></div>
     <div class="g_elem supprof"><p>*Должность научного руководителя:</p><textarea maxlength="250"></textarea></div>
     <div class="g_elem supdep"><p>*Кафедра:</p><textarea maxlength="100"></textarea></div>
     <div class="g_elem supmail"><p>Почта: <p>{{ mail }}</p></p></div>
-    <div class="g_elem supphone"><p>*Телефон:</p><textarea maxlength="100"></textarea></div>
+    <div class="g_elem supphone"><p>Телефон: <p>{{ phone }}</p></div>
     <div class="g_elem suporcid"><p>ORCID:</p><textarea maxlength="100"></textarea></div>
     <div class="g_elem supinterest"><p>Области научного интереса:</p><textarea maxlength="300"></textarea></div>
-</div>
+
+    <div class="form_buttons">
+        {% block home_button %}{% endblock %}
+        <button type="submit" class="save button"><p>Сохранить</p></button>
+        <button type="reset" class="reset button"><p>Очистить</p></button>
+    </div>
+</form>
 {% endblock %}
 
-{% block panel_footer %}
-<div class="options">
-    {% block home_button %}{% endblock %}
-    <button type="submit" class="save button"><p>Сохранить</p></button>
-</div>
-{% endblock %}
+
 
 
 

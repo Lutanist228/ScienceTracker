@@ -29,6 +29,6 @@ def retrieve_udata(inputted_information: Union[str, list], json_doc: dict) -> st
     else: 
         return None, None
 
-        
+
 
     

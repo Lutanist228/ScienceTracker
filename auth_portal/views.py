@@ -1,20 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import HttpRequest, HttpResponse
 from django.forms import ValidationError
-from dotenv import load_dotenv
 import os
 
 from utils.additional_functions import json_reader, retrieve_udata
-
-load_dotenv()
+from config import USERS
 
 class StudentViews():
-    def login(request: HttpRequest, user_data: dict) -> HttpResponse:
-        return render(request=request, template_name=r"auth_portal\student_profile_inactive.html", context=user_data)
+    def login(request: HttpRequest, u_login: str) -> HttpResponse:
+        _, udata = retrieve_udata(inputted_information=u_login, json_doc=USERS)
+        
+        return render(request=request, template_name=r"auth_portal\student_profile_inactive.html", context=udata)
 
 class SupervisorViews():
-    def login(request: HttpRequest, user_data: dict) -> HttpResponse:
-        return render(request=request, template_name=r"auth_portal\supervisor_profile_inactive.html", context=user_data)
+    def login(request: HttpRequest, u_login: str) -> HttpResponse:
+        _, udata = retrieve_udata(inputted_information=u_login, json_doc=USERS)
+        
+        return render(request=request, template_name=r"auth_portal\supervisor_profile_inactive.html", context=udata)
 
 def auth(request: HttpRequest) -> HttpResponse: 
     user_data = request.GET
@@ -27,19 +30,16 @@ def auth(request: HttpRequest) -> HttpResponse:
             error_log["error"] = "поля формы не заполнены"
             return render(request=request, template_name=r"auth_portal\auth_error.html", context=error_log)
         
-        users = json_reader(path=os.environ.get("USERS_PATH"))
-        role, data = retrieve_udata(inputted_information=user_data["userlogin"], json_doc=users)
+        role, _ = retrieve_udata(inputted_information=user_data["userlogin"], json_doc=USERS)
 
         match role:
             case "STUDENT":
-                return StudentViews.login(request=request, user_data=data)
+                return redirect(to=reverse("student_login", args=(user_data["userlogin"], )))
             case "SUPERVISOR":
-                return SupervisorViews.login(request=request, user_data=data)
+                return redirect(to=reverse("supervisor_login", args=(user_data["userlogin"], )))
             case None:
                 error_log["error"] = "пользователь не найден в системе"
                 return render(request=request, template_name=r"auth_portal\auth_error.html", context=error_log)
     else:
         return render(request=request, template_name=r"auth_portal\auth_layout.html")
 
-def home():
-    pass

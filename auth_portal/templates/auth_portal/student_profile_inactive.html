@@ -7,24 +7,23 @@
 {% endblock %}
 
 {% block panel_body %}
-<div class="info_block">
+<form class="info_block">
     <div class="g_elem studfio"><p>ФИО: <p>{{ fio }}</p></p></div>
     <div class="g_elem studgroup"><p>*Группа:</p><textarea maxlength="100"></textarea></div>
-    <div class="g_elem studfac"><p>*Факультет:</p><textarea maxlength="100"></textarea></div>
+    <div class="g_elem studfac"><p>*Факультет:</p><textarea maxlength="150"></textarea></div>
     <div class="g_elem studmail"><p>Почта: <p>{{ mail }}</p></p></div>
-    <div class="g_elem studspec"><p>*Специальность:</p><textarea maxlength="250"></textarea></div>
-    <div class="g_elem studeduc"><p>*Уровень Образования:</p><textarea maxlength="100"></textarea></div>
-    <div class="g_elem studphone"><p>*Телефон:</p><textarea maxlength="100"></textarea></div>
+    <div class="g_elem studspec"><p>*Специальность:</p><textarea maxlength="300"></textarea></div>
+    <div class="g_elem studeduc"><p>*Уровень Образования:</p><textarea maxlength="150"></textarea></div>
+    <div class="g_elem studphone"><p>Телефон: <p>{{ phone }}</p></div>
     <div class="g_elem studorcid"><p>ORCID:</p><textarea maxlength="100"></textarea></div>
     <div class="g_elem studinterest"><p>Области научного интереса:</p><textarea maxlength="300"></textarea></div>
-</div>
-{% endblock %}
 
-{% block panel_footer %}
-<div class="options">
-    {% block home_button %}{% endblock %}
-    <button type="submit" class="save button"><p>Сохранить</p></button>
-</div>
+    <div class="form_buttons">
+        {% block home_button %}{% endblock %}
+        <button type="submit" class="save button"><p>Сохранить</p></button>
+        <button type="reset" class="reset button"><p>Очистить</p></button>
+    </div>
+</form>
 {% endblock %}
 
 

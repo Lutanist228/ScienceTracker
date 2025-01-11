@@ -117,3 +117,29 @@ a:visited {
     grid-column: 2;
     grid-row: 5 / 7;
 }
+
+.form_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.form_buttons button { 
+    background-color: #D7E7F4;
+    width: 30%;
+    height: 35%;
+    border-style: none;
+    border-radius: 15px;
+}
+
+.form_buttons p {
+    font-size: large;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #343434;
+}
+

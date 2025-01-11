@@ -124,15 +124,23 @@ a:visited {
     padding: 0 10px 10px 0;
 }
 
-.options .button { 
-    background-color: #EEEEEE;
+.form_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.form_buttons button { 
+    background-color: #D7E7F4;
     width: 30%;
     height: 35%;
     border-style: none;
     border-radius: 15px;
 }
 
-.options p {
+.form_buttons p {
     font-size: large;
     font-weight: bold;
     text-transform: uppercase;
