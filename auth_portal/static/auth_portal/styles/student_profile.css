@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+.hidden-block {
+    position: absolute;
+}
+
 html, body {
     height: 100%;
     background-color: #D7E7F4;
