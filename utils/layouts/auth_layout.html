@@ -12,7 +12,8 @@
         <div class="wrapper">
             <section class="fullscreen">
                 <div class="fullscreen__body">
-                    <form class="auth-panel">
+                    <form class="auth-panel" method="post">
+                        {% csrf_token %}
                         <div class="elem-1">
                             <p class="login title">Логин</p>
                             <input type="text" class="login field" name="userlogin" minlength="5" maxlength="255">

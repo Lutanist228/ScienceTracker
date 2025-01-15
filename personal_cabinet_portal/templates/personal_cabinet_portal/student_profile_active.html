@@ -1,0 +1,28 @@
+{% extends 'profile_layout.html' %}
+
+{% block panel_body %}
+<form class="info_block" method="post">
+    {% csrf_token %}
+    <div class="g_elem studfio"><p>ФИО: <p>{{ fio }}</p></p></div>
+    <div class="g_elem studgroup"><p>*Группа:</p><textarea name="group" maxlength="100">{{ group }}</textarea></div>
+    <div class="g_elem studfac"><p>*Факультет:</p><textarea name="fac" maxlength="150">{{ faculty }}</textarea></div>
+    <div class="g_elem studmail"><p>Почта: <p>{{ mail }}</p></p></div>
+    <div class="g_elem studspec"><p>*Специальность:</p><textarea name="spec" maxlength="300">{{ speciality }}</textarea></div>
+    <div class="g_elem studeduc"><p>*Уровень Образования:</p><textarea name="educ" maxlength="150">{{ education }}</textarea></div>
+    <div class="g_elem studphone"><p>Телефон: <p>{{ phone }}</p></div>
+    <div class="g_elem studorcid"><p>ORCID:</p><textarea name="orcid" maxlength="100">{{ orcid }}</textarea></div>
+    <div class="g_elem studinterest"><p>Области научного интереса:</p><textarea name="interest" maxlength="300">{{ interest }}</textarea></div>
+    <div class="hidden-block" hidden><input name="POST-status" value="True"></div>
+</form>
+{% endblock %}
+
+{% block home_button %}
+<a href="home/" class="enter_cabinet button"><div><p>Личный Кабинет 🗂</p></div></a>
+<a class="attach_portfolio button"><div><p>Прикрепить мое Портфолио 🧷</p></div></a>
+<a class="download_portfolio button"><div><p>Скачать мое Портфолио 📁</p></div></a>
+{% endblock %}
+    
+
+
+
+

@@ -1,4 +1,4 @@
-{% extends 'auth_portal/profile_layout.html' %}
+{% extends 'profile_layout.html' %}
 
 {% block title  %}Профиль Пользователя{% endblock %}
 
@@ -10,8 +10,8 @@
 <form class="info_block" method="post">
     {% csrf_token %}
     <div class="g_elem supfio"><p>ФИО: <p>{{ fio }}</p></p></div>
-    <div class="g_elem supprof"><p>*Должность научного руководителя:</p><textarea name="prof" maxlength="250"></textarea></div>
-    <div class="g_elem supdep"><p>*Кафедра:</p><textarea name="dep" maxlength="100"></textarea></div>
+    <div class="g_elem supprof"><p>*Должность научного руководителя:</p><textarea name="profession" maxlength="250"></textarea></div>
+    <div class="g_elem supdep"><p>*Кафедра:</p><textarea name="department" maxlength="100"></textarea></div>
     <div class="g_elem supmail"><p>Почта: <p>{{ mail }}</p></p></div>
     <div class="g_elem supphone"><p>Телефон: <p>{{ phone }}</p></div>
     <div class="g_elem suporcid"><p>ORCID:</p><textarea name="orcid" maxlength="100"></textarea></div>

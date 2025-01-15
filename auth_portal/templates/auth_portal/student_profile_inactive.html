@@ -1,4 +1,4 @@
-{% extends 'auth_portal/profile_layout.html' %}
+{% extends 'profile_layout.html' %}
 
 {% block title  %}Профиль Пользователя{% endblock %}
 
@@ -11,10 +11,10 @@
     {% csrf_token %}
     <div class="g_elem studfio"><p>ФИО: <p>{{ fio }}</p></p></div>
     <div class="g_elem studgroup"><p>*Группа:</p><textarea name="group" maxlength="100"></textarea></div>
-    <div class="g_elem studfac"><p>*Факультет:</p><textarea name="fac" maxlength="150"></textarea></div>
+    <div class="g_elem studfac"><p>*Факультет:</p><textarea name="faculty" maxlength="150"></textarea></div>
     <div class="g_elem studmail"><p>Почта: <p>{{ mail }}</p></p></div>
-    <div class="g_elem studspec"><p>*Специальность:</p><textarea name="spec" maxlength="300"></textarea></div>
-    <div class="g_elem studeduc"><p>*Уровень Образования:</p><textarea name="educ" maxlength="150"></textarea></div>
+    <div class="g_elem studspec"><p>*Специальность:</p><textarea name="speciality" maxlength="300"></textarea></div>
+    <div class="g_elem studeduc"><p>*Уровень Образования:</p><textarea name="education" maxlength="150"></textarea></div>
     <div class="g_elem studphone"><p>Телефон: <p>{{ phone }}</p></div>
     <div class="g_elem studorcid"><p>ORCID:</p><textarea name="orcid" maxlength="100"></textarea></div>
     <div class="g_elem studinterest"><p>Области научного интереса:</p><textarea name="interest" maxlength="300"></textarea></div>
