@@ -43,13 +43,9 @@ def set_json_value(json_doc: dict, key_value: str, **kwargs):
         for user in json_doc[role]:
             if key_value in user.values():
                 for key, value in kwargs.items():
-                    user[key] = value
+                    user[key] = str(value)
                     
     json_writer(j_dict=json_doc, path=os.environ.get("USERS_PATH"))
-                
-    
-
-    
     
     
 

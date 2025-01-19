@@ -13,5 +13,5 @@ urlpatterns = [
     path(f"api/{os.environ.get("API_PATH_URL")}/supervisor/", v.SupervisorAPI.as_view(), name="supervisor_api"),
     re_path(r'^auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
-    path("<str:u_token>№<int:u_id>/", include("personal_cabinet_portal.urls")),
+    path("<str:u_token>/", include("personal_cabinet_portal.urls")),
 ]

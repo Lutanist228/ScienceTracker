@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpRequest, HttpResponse
 from rest_framework.views import APIView
+from rest_framework.generics import CreateAPIView
+from django.contrib.auth.models import User
 
 from utils.additional_functions import retrieve_udata, set_json_value
 from config import generate_utoken, read_users
@@ -21,7 +23,7 @@ class StudentAPI(APIView):
             
             if serializer.is_valid(raise_exception=True):
                 saved_row: StudentProfile = serializer.save()
-                set_json_value(user_id=saved_row.pk, url_token=generate_utoken(), key_value=u_login, json_doc=read_users())
+                set_json_value(user_id=saved_row.pk, url_token=generate_utoken(message=u_login), key_value=u_login, json_doc=read_users())
                 _, udata = retrieve_udata(inputted_information=u_login, json_doc=read_users())
                 
                 return redirect(to=reverse("personal_cabinet_portal", args=(udata["url_token"], udata["user_id"],)))
@@ -47,7 +49,7 @@ class SupervisorAPI(APIView):
             
             if serializer.is_valid(raise_exception=True):
                 saved_row: StudentProfile = serializer.save()
-                set_json_value(user_id=saved_row.pk, url_token=generate_utoken(), key_value=u_login, json_doc=read_users())
+                set_json_value(user_id=saved_row.pk, url_token=generate_utoken(message=u_login), key_value=u_login, json_doc=read_users())
                 _, udata = retrieve_udata(inputted_information=u_login, json_doc=read_users())
             
                 return redirect(to=reverse("personal_cabinet_portal", args=(udata["url_token"], udata["user_id"],)))
@@ -59,7 +61,10 @@ class SupervisorAPI(APIView):
         _, udata = retrieve_udata(inputted_information=u_login, json_doc=read_users())
         
         return render(request=request, template_name=r"auth_portal\supervisor_profile_inactive.html", context=udata)
- 
+
+class AdminAPI(CreateAPIView):
+    queryset = User.objects.values("email", "is_staff").all() #!!!!
+    
 class GeneralApi(APIView):
     def get(self, request: HttpRequest) -> HttpResponse:
         return render(request=request, template_name=r"auth_layout.html")
