@@ -1,0 +1,23 @@
+{% extends 'personal_cabinet_layout.html' %}
+
+{% block title %}<p>Личный Кабинет Студента</p>{% endblock %}
+
+{% block cabinet_header %}
+<h1 class="panel-title">ОКНО ПРОВЕДЕНИЯ НАУЧНОЙ РАБОТЫ</h1>
+{% endblock %}
+
+{% block cabinet_body %}
+<div class="info_block">
+    <div class="g_elem studdep"><p>Кафедра:</p></div>
+    <div class="g_elem studsuper"><p>Научный руководитель:</p></div>
+    <div class="g_elem studdline"><p>Дата текущего рубежа “утверждение темы”:</p></div>
+    <div class="g_elem studtopic"><p>Название научной работы:</p></div>
+    <div class="g_elem studfiles"><p>Приложить сопутствующий файл</p></div>
+</div>
+{% endblock %}
+
+{% block cabinet_footer %}
+<div class="options">
+    <a href={{ profile }} class="option_1"><p>мой профиль 🧑🏻‍🎓</p></a>
+</div>
+{% endblock %}

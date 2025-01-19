@@ -1,0 +1,105 @@
+a {
+    text-decoration: none;
+    color: #343434;
+}
+
+a:visited {
+    color: none;
+}
+
+.cabinet-panel > .cabinet-header > .panel-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-wrap: wrap;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #343434;
+}
+
+.cabinet-panel > .cabinet-body > .info_block {
+    display: grid;
+    column-gap: 15px;
+    row-gap: 15px;
+    grid-template-columns: 25% 25% 25%;
+    grid-template-rows: repeat(4, 1fr);
+    justify-content: center;
+    height: 65%;
+}
+
+.cabinet-panel > .cabinet-body > .info_block .g_elem {
+    display: flex;
+    border: solid;
+    background-color: #E0EDF0;
+    border-color: #FFFFFF;
+    padding: 15px 15px 15px 15px;
+    border-radius: 15px;
+    border-width: thick;
+    outline: none;
+    align-items: center;
+}
+
+.cabinet-panel > .cabinet-body > .info_block .g_elem p {
+    font-size: larger;
+    text-transform: capitalize;
+    color: #343434;    
+}
+
+.cabinet-panel > .cabinet-body > .info_block .g_elem.studsuper {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+}
+
+.cabinet-panel > .cabinet-body > .info_block .g_elem.studdep {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.cabinet-panel > .cabinet-body > .info_block .g_elem.studdline {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+}
+
+.cabinet-panel> .cabinet-body > .info_block .g_elem.studtopic {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+}
+
+.cabinet-panel > .cabinet-body > .info_block .g_elem.studfiles {
+    grid-column: 1 / 4;
+    grid-row: 4 / 5;
+}
+
+.cabinet-panel > .cabinet-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabinet-panel > .cabinet-footer > .options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 20vh;
+    align-items: center;
+    margin: 30px;
+    height: 80%;
+    width: 80%;
+}
+
+.cabinet-panel > .cabinet-footer > .options .option_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 40%;
+    border-radius: 15px;
+    background-color: #E5E5E5;
+}
+
+.cabinet-panel > .cabinet-footer > .options p {
+    text-transform: lowercase;
+    font-size: x-large;
+    font-weight: bold;
+    letter-spacing: 3px;
+}

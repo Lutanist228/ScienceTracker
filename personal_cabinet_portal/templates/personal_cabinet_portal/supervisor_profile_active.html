@@ -3,7 +3,6 @@
 {% block panel_body %}
 <form class="info_block" method="post">
     {% csrf_token %}
-    <input type="hidden" name="_method" value="PUT">
     <div class="g_elem supfio"><p>ФИО: <p>{{ fio }}</p></p></div>
     <div class="g_elem supprof"><p>*Должность научного руководителя:</p><textarea name="profession" maxlength="250">{{ profession }}</textarea></div>
     <div class="g_elem supdep"><p>*Кафедра:</p><textarea name="department" maxlength="100">{{ department }}</textarea></div>
@@ -18,10 +17,12 @@
 </form>
 {% endblock %}
 
-{% block home_button %}
-<a href="" class="enter_cabinet button"><div><p>Личный Кабинет</p></div></a>
-<a class="attach_portfolio button"><div><p>Прикрепить мое Портфолио</p></div></a>
-<a class="download_portfolio button"><div><p>Скачать мое Портфолио</p></div></a>
+{% block panel_footer %}
+<div class="options">
+    <a href="javascript:history.back()" class="enter_cabinet button"><div><p>Личный Кабинет</p></div></a>
+    <a class="attach_portfolio button"><div><p>Прикрепить мое Портфолио</p></div></a>
+    <a class="download_portfolio button"><div><p>Скачать мое Портфолио</p></div></a>
+</div>
 {% endblock %}
     
 

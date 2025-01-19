@@ -14,38 +14,75 @@ class StudentProfileViewset(ModelViewSet):
     queryset = StudentProfile.objects.all()
     serializer_class = StudentSerializer
     lookup_field = 'id'
-    profile_data = None
     
-    @action(detail=True, methods=['get'])
-    def display_profile_info(self, request: HttpRequest, u_token: str, id: int):
-        _, u_data = retrieve_udata(inputted_information=u_token, json_doc=read_users())
-        
-        profile_data = self.get_object()
-        self.profile_data = {"group":profile_data.group, "faculty":profile_data.faculty, "speciality":profile_data.speciality, "education":profile_data.education, 
-                             "orcid":profile_data.orcid, "interest":profile_data.interest, **u_data}
-                
-        return render(request=request, template_name=r"personal_cabinet_portal\student_profile_active.html", context={**self.profile_data})
-    
-    @action(detail=True, methods=["put"])
-    def update_profile_info(self, request: HttpRequest, u_token: str, id: int):
-        pass
+    @action(detail=True, methods=["get", "post"])
+    def process_profile_info(self, request: HttpRequest, u_token: str, id: int):
+        def load_data(return_partial: bool = False) -> dict:
+            _, u_data = retrieve_udata(inputted_information=u_token, json_doc=read_users())
+            profile_data = self.get_object()
+            
+            if return_partial == False:
+                profile_data = {"group":profile_data.group, "faculty":profile_data.faculty, "speciality":profile_data.speciality, "education":profile_data.education, 
+                                    "orcid":profile_data.orcid, "interest":profile_data.interest, **u_data}
+                return profile_data
+            else:
+                profile_data = {"group":profile_data.group, "faculty":profile_data.faculty, "speciality":profile_data.speciality, "education":profile_data.education, 
+                                    "orcid":profile_data.orcid, "interest":profile_data.interest}
+                return profile_data, u_data
+            
+        if request.method == 'GET':
+            return render(request=request, template_name=r"personal_cabinet_portal\student_profile_active.html", context={**load_data()})
+        elif request.method == 'POST':
+            partial_data = load_data(return_partial=True)
+            
+            serializer: StudentSerializer = self.get_serializer(self.get_object(), data=request.data, partial=True)
+            
+            if serializer.is_valid():
+                serializer.save()
+                return render(request=request, template_name=r"personal_cabinet_portal\student_profile_active.html", context={**load_data()})
+            else:
+                return render(request=request, template_name=r"personal_cabinet_portal\student_profile_active.html", context={**partial_data[0], **partial_data[1]})
     
 class SupervisorProfileViewset(ModelViewSet):
     queryset = SupervisorProfile.objects.all()
     serializer_class = SupervisorSerializer
     lookup_field = 'id'
-    profile_data = None
     
-    @action(detail=True, methods=['get'])
-    def get_profile_info(self, request: HttpRequest, u_token: str, id: int):
-        _, u_data = retrieve_udata(inputted_information=u_token, json_doc=read_users())
+    @action(detail=True, methods=["get", "post"])
+    def process_profile_info(self, request: HttpRequest, u_token: str, id: int):
+        def load_data(return_partial: bool = False) -> dict:
+            _, u_data = retrieve_udata(inputted_information=u_token, json_doc=read_users())
+            profile_data = self.get_object()
+            
+            if return_partial == False:
+                profile_data = {"profession":profile_data.profession, "department":profile_data.department, "orcid":profile_data.orcid, 
+                                "interest":profile_data.interest, **u_data}
+                return profile_data
+            else:
+                profile_data = {"profession":profile_data.profession, "department":profile_data.department, "orcid":profile_data.orcid, 
+                                "interest":profile_data.interest}
+                return profile_data, u_data
+
+        if request.method == 'GET':
+            return render(request=request, template_name=r"personal_cabinet_portal\supervisor_profile_active.html", context={**load_data()})
+        elif request.method == 'POST':
+            partial_data = load_data(return_partial=True)
+            
+            serializer: SupervisorSerializer = self.get_serializer(self.get_object(), data=request.data, partial=True)
+            
+            if serializer.is_valid():
+                serializer.save()
+                return render(request=request, template_name=r"personal_cabinet_portal\supervisor_profile_active.html", context={**load_data()})
+            else:
+                return render(request=request, template_name=r"personal_cabinet_portal\supervisor_profile_active.html", context={**partial_data[0], **partial_data[1]})
         
-        profile_data = self.get_object()
-        self.profile_data = {"profession":profile_data.profession, "department":profile_data.department, "orcid":profile_data.orcid, "interest":profile_data.interest, **u_data}
-                
-        return render(request=request, template_name=r"personal_cabinet_portal\supervisor_profile_active.html", context={**self.profile_data})
-    
 class GeneralApi(APIView):
     def get(self, request: HttpRequest, u_token):
-        return render(request=request, template_name=r"personal_cabinet.html")
-
+        role, u_data = retrieve_udata(inputted_information=u_token, json_doc=read_users())
+        
+        match role:
+            case "STUDENT":
+                return render(request=request, template_name=r"personal_cabinet_portal\student_cabinet.html", context={"profile":f"student_profile/{u_data["user_id"]}"})
+            case "SUPERVISOR":
+                return render(request=request, template_name=r"personal_cabinet_portal\supervisor_cabinet.html", context={"profile":f"supervisor_profile/{u_data["user_id"]}"})
+        

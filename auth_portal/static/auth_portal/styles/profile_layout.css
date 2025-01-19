@@ -22,11 +22,9 @@ html, body {
 .fullscreen {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: static;
     min-height: 100vh;
     width: 100%;
-    top: 0;
-    left: 0;
 }
 
 .fullscreen__body {
@@ -40,7 +38,7 @@ html, body {
 .profile-panel {
     display: flex;
     flex-direction: column;
-    flex-grow: 2;
+    flex-grow: 1;
     background-color: #FFFFFF;
     border-radius: 15px;
     max-width: 80%;

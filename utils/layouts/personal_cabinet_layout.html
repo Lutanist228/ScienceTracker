@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'personal_cabinet_portal/styles/personal_cabinet_layout.css' %}">
+    <link rel="stylesheet" href="{% static 'personal_cabinet_portal/styles/student_cabinet.css' %}">    
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="fullscreen">
+            <div class="fullscreen__body">
+                <div class="cabinet-panel">
+                    <div class="cabinet-header">
+                        {% block cabinet_header%}
+                        {% endblock %}
+                    </div>
+                    <div class="cabinet-body">
+                        {% block cabinet_body %}
+                        {% endblock %}
+                    </div>
+                    <div class="cabinet-footer">
+                        {% block cabinet_footer %}
+                        {% endblock %}
+                    </div>   
+                </div>             
+            </div>
+        </section>
+    </div>
+</body>
+</html>
